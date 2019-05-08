@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i" rel="stylesheet">
-		<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/bootstrap-grid.css" rel="stylesheet">
-		<link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet">
 		<?php wp_head(); ?>
 	</head>
 	<body>
@@ -13,20 +10,23 @@
 		<!-- Logo -->
 		<div class="col-sm-3">
 			<div class="site-logo">
-				Blog <strong>template</strong>
+				<?php echo get_bloginfo( 'name' ); ?>
 			</div>
 		</div>
 		<!-- Meniuri -->
 		<div class="col-sm-9">
 			<div class="primary-menu">
-				<ul>
-					<li><a href="#">Nature</a></li>
-					<li><a href="#">People</a></li>
-					<li><a href="#">Trips</a></li>
-					<li><a href="#">Animals</a></li>
-					<li><a href="#">Fashion</a></li>
-					<li><a href="#">Tech</a></li>
-				</ul>
+				<?php 
+					/**
+					 * Here we need to add the primary menu.
+					 */
+					if ( has_nav_menu( 'primary' ) ) : 
+						wp_nav_menu( array(
+						 	'theme_location'  => 'primary',
+						 	'container' => 'nav'
+						) );
+					endif;
+				?>
 			</div>
 		</div>
 	</div>
